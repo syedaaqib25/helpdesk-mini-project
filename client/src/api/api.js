@@ -19,10 +19,11 @@ export const register = (formData) => API.post('/api/auth/register', formData);
 // ... rest of the file
 
 // Tickets
-export const fetchTickets = (params) => API.get('/tickets', { params });
-export const fetchTicketById = (id) => API.get(`/tickets/${id}`);
-export const createTicket = (ticketData) => API.post('/tickets', ticketData);
-export const updateTicket = (id, ticketData) => API.patch(`/tickets/${id}`, ticketData);
-export const addComment = (id, commentData) => API.post(`/tickets/${id}/comments`, commentData);
+// Tickets
+export const fetchTickets = (params) => API.get('/api/tickets', { params });
+export const fetchTicketById = (id) => API.get(`/api/tickets/${id}`);
+export const createTicket = (ticketData) => API.post('/api/tickets', ticketData);
+export const updateTicket = (id, ticketData) => API.patch(`/api/tickets/${id}`, ticketData);
+export const addComment = (id, commentData) => API.post(`/api/tickets/${id}/comments`, commentData);
 
 export default API;
