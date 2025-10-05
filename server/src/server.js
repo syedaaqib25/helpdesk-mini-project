@@ -8,7 +8,10 @@ import authRoutes from './routes/authRoutes.js';
 import ticketRoutes from './routes/ticketRoutes.js';
 
 dotenv.config();
-
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://helpdesk-mini-project.vercel.app"
+];
 const app = express();
 const PORT = process.env.PORT;
 
@@ -16,8 +19,14 @@ app.get('/', (req, res) => {
   res.send('🐒🐽Helpdesk Ticketing System API');
 });
 app.use(cors({
-  origin:process.env.FRONTEND_URL,
-  credentials:true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
 }));
 app.use(express.json());
 
