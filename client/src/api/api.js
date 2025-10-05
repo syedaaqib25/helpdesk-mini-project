@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://helpdesk-mini-project.onrender.com',
+  baseURL: import.meta.env.VITE_API_URI,
 });
 
 API.interceptors.request.use((req) => {
